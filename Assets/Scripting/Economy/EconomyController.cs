@@ -23,7 +23,11 @@ public class EconomyController : MonoBehaviour
         EconomyManager.UpdateItemAmount(states[0].name, -amount);
         Debug.Log(states[0].name + "|" + states[0].amount);
     }
-
+    public string ViewSubHelth()
+    {
+        string name = EconomyManager.GetItemAmount(states[0].name).ToString();
+        return name;
+    }
 
     public void AddOxigen(int amount)
     {
@@ -37,7 +41,11 @@ public class EconomyController : MonoBehaviour
         EconomyManager.UpdateItemAmount(states[1].name, -amount);
         Debug.Log(states[0].name + "|" + states[1].amount);
     }
-
+    public string ViewOxigen()
+    {
+        string name = EconomyManager.GetItemAmount(states[1].name).ToString();
+        return name;
+    }
     public void AddMachineHelth(int amount)
     {
 
@@ -49,6 +57,11 @@ public class EconomyController : MonoBehaviour
     {
         EconomyManager.UpdateItemAmount(states[2].name, -amount);
         Debug.Log(states[0].name + "|" + states[2].amount);
+    }
+    public string ViewMachineHelth()
+    {
+        string name = EconomyManager.GetItemAmount(states[2].name).ToString();
+        return name;
     }
 
     public void AddGeneratorHelth(int amount)
@@ -63,7 +76,11 @@ public class EconomyController : MonoBehaviour
         EconomyManager.UpdateItemAmount(states[3].name, -amount);
         Debug.Log(states[0].name + "|" + states[3].amount);
     }
-
+    public string ViewGeneratorHelth()
+    {
+        string name = EconomyManager.GetItemAmount(states[3].name).ToString();
+        return name;
+    }
     public void AddHathHelth(int amount)
     {
 
@@ -76,7 +93,11 @@ public class EconomyController : MonoBehaviour
         EconomyManager.UpdateItemAmount(states[4].name, -amount);
         Debug.Log(states[0].name + "|" + states[4].amount);
     }
-
+    public string ViewHathHelth()
+    {
+        string name = EconomyManager.GetItemAmount(states[4].name).ToString();
+        return name;
+    }
     public void AddControlRoomHelth(int amount)
     {
 
@@ -88,6 +109,11 @@ public class EconomyController : MonoBehaviour
     {
         EconomyManager.UpdateItemAmount(states[5].name, -amount);
         Debug.Log(states[0].name + "|" + states[5].amount);
+    }
+    public string ViewControlRoomHelth()
+    {
+        string name = EconomyManager.GetItemAmount(states[5].name).ToString();
+        return name;
     }
 
     public void AddMiningHelth(int amount)
@@ -102,7 +128,11 @@ public class EconomyController : MonoBehaviour
         EconomyManager.UpdateItemAmount(states[6].name, -amount);
         Debug.Log(states[0].name + "|" + states[6].amount);
     }
-
+    public string ViewMiningHelth()
+    {
+        string name = EconomyManager.GetItemAmount(states[6].name).ToString();
+        return name;
+    }
     public void AddOxigenRoomHelth(int amount)
     {
 
@@ -114,6 +144,11 @@ public class EconomyController : MonoBehaviour
     {
         EconomyManager.UpdateItemAmount(states[7].name, -amount);
         Debug.Log(states[0].name + "|" + states[7].amount);
+    }
+    public string ViewOxigenRoomHelth()
+    {
+        string name = EconomyManager.GetItemAmount(states[7].name).ToString();
+        return name;
     }
 
     public void AddStorageHelth(int amount)
@@ -128,6 +163,14 @@ public class EconomyController : MonoBehaviour
         EconomyManager.UpdateItemAmount(states[8].name, -amount);
         Debug.Log(states[0].name + "|" + states[8].amount);
     }
+    public string ViewStorageHelth()
+    {
+        string name = EconomyManager.GetItemAmount(states[8].name).ToString();
+        return name;
+    }
+
+
+
 
 
 }
