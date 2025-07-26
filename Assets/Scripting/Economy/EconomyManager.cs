@@ -1,9 +1,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public static class EconomyManager
+public class EconomyManager:MonoBehaviour
 {
     private static Dictionary<string, MainStorage> items = new Dictionary<string, MainStorage>();
+
+
+    public static void RegisterItem(MainStorage item)
+    {
+        if (!items.ContainsKey(item.name))
+        {
+            items.Add(item.name, item);
+        }
+        else
+        {
+            Debug.LogWarning($"Предмет под названием {item.name} уже зарегистрирован");
+        }
+    }
     public static void UpdateItemAmount(string itemName, float amount)
     {
         if (items.TryGetValue(itemName, out MainStorage item))
