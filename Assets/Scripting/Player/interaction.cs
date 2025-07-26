@@ -13,8 +13,7 @@ using UnityEngine.InputSystem;
 
     private void Awake()
         {
-
-            InputManager.input.Player.Interact.performed += context => interact();
+            // InputManager.input.Player.Interact.performed += context => interact();
         }
 
 
@@ -59,7 +58,7 @@ using UnityEngine.InputSystem;
 
     private void ToggleMenu(GameObject menu)
     {
-        // Если меню уже активно - скрываем его
+        // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ - пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ
         if (currentActiveMenu == menu)
         {
             menu.SetActive(false);
@@ -67,10 +66,10 @@ using UnityEngine.InputSystem;
             return;
         }
 
-        // Скрываем все другие меню
+        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
         HideAllMenus();
 
-        // Показываем нужное меню
+        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
         menu.SetActive(true);
         currentActiveMenu = menu;
     }

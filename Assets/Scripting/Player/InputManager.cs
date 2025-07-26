@@ -4,11 +4,11 @@ using UnityEngine.InputSystem;
 public class InputManager : MonoBehaviour
 {
     public static InputSystem_Actions input;
+    
     private void Awake()
     {
         input = new InputSystem_Actions();
     }
-
 
     private void OnEnable()
     {
