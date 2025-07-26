@@ -6269,6 +6269,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f8df154ee0b9a444b1b512a92812f4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  RepairCost: 1
+  flooding: {fileID: 717752561}
+  OnBreak:
+    m_PersistentCalls:
+      m_Calls: []
+  OnFix:
+    m_PersistentCalls:
+      m_Calls: []
   speed: 0.5
   direction: {x: 1, y: 0.25}
 --- !u!4 &2070549043

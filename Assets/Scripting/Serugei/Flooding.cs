@@ -2,14 +2,13 @@ using NUnit.Framework;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Flooding : MonoBehaviour
 {
     [SerializeField] List<Flooding> NeighbourFloodings;
     [SerializeField] List<GateWay> Gates;
-    float FloodingPercent = 0;
+    float FloodingPercent = 0;  ////// !!!!!STEPA!!!!! 
     int BreakBonus = 0;
     private void Start()
     {
