@@ -363,6 +363,8 @@ MonoBehaviour:
   pauseMenu: {fileID: 73627767}
   interactionMenus:
   - {fileID: 1856203650}
+  currentActiveMenu: {fileID: 0}
+  playerInTrigger: {fileID: 0}
 --- !u!1 &62095361
 GameObject:
   m_ObjectHideFlags: 0
