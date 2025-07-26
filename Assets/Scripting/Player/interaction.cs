@@ -13,7 +13,7 @@ using UnityEngine.InputSystem;
 
     private void Awake()
         {
-            // InputManager.input.Player.Interact.performed += context => interact();
+            InputManager.input.Player.Interact.performed += context => interact();
         }
 
 

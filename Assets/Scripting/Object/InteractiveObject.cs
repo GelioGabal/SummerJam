@@ -1,0 +1,69 @@
+using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.InputSystem;
+
+public class InteractiveObject : MonoBehaviour
+{
+    [SerializeField] private GameObject tooltip;
+    private bool _isPlayerInTriggerZone;
+    
+    public UnityEvent OnInteract;
+
+    private void Awake()
+    {
+        OnInteract.AddListener(() => 
+        {
+            Debug.Log("OnInteract вызвано");
+        });
+        OnInteract.AddListener(() => 
+        {
+            Debug.Log("Скроем подсказочку");
+           ShowTooltip(false);
+        });
+    }
+    private void Start()
+    {
+        if (tooltip != null)
+        {
+            tooltip.SetActive(false);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (!other.CompareTag("Player")) return;
+        
+        InputManager.input.Object.Interact.performed += Interact;
+        InputManager.input.Object.Enable();
+        
+        _isPlayerInTriggerZone = true;
+        ShowTooltip(true);
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (!other.CompareTag("Player")) return;
+        
+        InputManager.input.Object.Interact.performed -= Interact;
+        InputManager.input.Object.Disable();
+        
+        _isPlayerInTriggerZone = false;
+        ShowTooltip(false);
+    }
+
+    private void Interact(InputAction.CallbackContext context)
+    {
+        if (!_isPlayerInTriggerZone) return;
+
+        Debug.Log("Игрок в зоне взаимодейсвия нажал на кнопку взаимодейсвтия");
+        OnInteract?.Invoke();
+    }
+
+    private void ShowTooltip(bool show)
+    {
+        if (tooltip == null) return;
+        
+        tooltip.SetActive(show);
+        Debug.Log("Показываем подсказку: " + show);
+    }
+}
