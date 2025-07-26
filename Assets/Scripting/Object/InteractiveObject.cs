@@ -8,6 +8,7 @@ public class InteractiveObject : MonoBehaviour
     private bool _isPlayerInTriggerZone;
     
     public UnityEvent OnInteract;
+    public UnityEvent OnLeaveZone;
 
     private void Awake()
     {
@@ -15,6 +16,7 @@ public class InteractiveObject : MonoBehaviour
         {
             Debug.Log("OnInteract вызвано");
         });
+        
         OnInteract.AddListener(() => 
         {
             Debug.Log("Скроем подсказочку");
@@ -33,8 +35,8 @@ public class InteractiveObject : MonoBehaviour
     {
         if (!other.CompareTag("Player")) return;
         
-        InputManager.input.Object.Interact.performed += Interact;
-        InputManager.input.Object.Enable();
+        InputManager.playerInput.Object.Interact.performed += Interact;
+        InputManager.playerInput.Object.Enable();
         
         _isPlayerInTriggerZone = true;
         ShowTooltip(true);
@@ -44,11 +46,13 @@ public class InteractiveObject : MonoBehaviour
     {
         if (!other.CompareTag("Player")) return;
         
-        InputManager.input.Object.Interact.performed -= Interact;
-        InputManager.input.Object.Disable();
+        InputManager.playerInput.Object.Interact.performed -= Interact;
+        InputManager.playerInput.Object.Disable();
         
         _isPlayerInTriggerZone = false;
         ShowTooltip(false);
+        
+        OnLeaveZone?.Invoke();
     }
 
     private void Interact(InputAction.CallbackContext context)

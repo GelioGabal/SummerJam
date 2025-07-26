@@ -6,35 +6,20 @@ using UnityEngine.Events;
 public class RotatorsPanel : MonoBehaviour
 {
     [SerializeField] private List<Rotator> rotators = new();
+    private bool _isOpened = false;
     public UnityEvent OnAllSolve;
-
-    private void Awake()
-    {
-        OnAllSolve.AddListener(() =>
-        {
-            Debug.Log("Всё решено, закрываем панель");
-            gameObject.SetActive(false);
-        });
-    }
 
     private void Start()
     {
+        _isOpened = false;
         gameObject.SetActive(false);
     }
 
-    // private void SetRotators()
-    // {
-    //     rotators.Clear();
-    //
-    //     var childRotators = GetComponentsInChildren<Rotator>();
-    //     foreach (var rotator in childRotators)
-    //     {
-    //         if (!rotators.Contains(rotator))
-    //         {
-    //             rotators.Add(rotator);
-    //         }
-    //     }
-    // }
+    public void TogglePanel()
+    {
+        _isOpened = !_isOpened;
+        gameObject.SetActive(_isOpened);
+    }
 
     public void RandomizeAllRotators()
     {
@@ -58,7 +43,7 @@ public class RotatorsPanel : MonoBehaviour
         }
 
         Debug.Log("Все головоломки решены!");
-        gameObject.SetActive(false);
+        OnAllSolve?.Invoke();
     }
 
     public void AddRotator(Rotator newRotator)

@@ -30,7 +30,7 @@ public class Timer : MonoBehaviour
     {
         if (!_isActive) return;
 
-        _currentTimer -= Time.deltaTime;// * timeScale;
+        _currentTimer -= Time.deltaTime;
 
         if (_currentTimer <= 0)
         {

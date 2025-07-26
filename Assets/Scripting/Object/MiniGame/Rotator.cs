@@ -4,11 +4,11 @@ using Random = UnityEngine.Random;
 
 public class Rotator : MonoBehaviour
 {
-    [HideInInspector] public bool IsSolved;
-    [SerializeField] private RotatorsPanel panel; 
+    [HideInInspector] public bool IsSolved = true;
     [SerializeField] private int[] availableAngles = { 45, 90, 135, 180, 225, 270, 315 };
     [SerializeField] private float angleGap = 45f;
     [SerializeField] private float targetAngle = 0f;
+    private RotatorsPanel panel; 
     private float _currentAngle; 
     
     public UnityEvent OnSolve;
@@ -30,6 +30,8 @@ public class Rotator : MonoBehaviour
         {
             Debug.Log("Кружок прокручен верно");
         });
+
+        IsSolved = true;
     }
     
     private void Update()

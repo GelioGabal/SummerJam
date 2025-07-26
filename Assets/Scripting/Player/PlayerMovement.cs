@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -14,19 +15,19 @@ public class PlayerMovement : MonoBehaviour
     {
         _rb = GetComponent<Rigidbody2D>();
     }
-    
-    private void OnEnable()
+
+    private void Start()
     {
-        InputManager.input.Player.Move.performed += OnMove;
-        InputManager.input.Player.Move.canceled += OnMove;
-        InputManager.input.Player.Enable();
+        InputManager.playerInput.Player.Move.performed += OnMove;
+        InputManager.playerInput.Player.Move.canceled += OnMove;
+        InputManager.playerInput.Player.Enable();
     }
 
     private void OnDisable()
     {
-        InputManager.input.Player.Move.performed -= OnMove;
-        InputManager.input.Player.Move.canceled -= OnMove;
-        InputManager.input.Player.Disable();
+        InputManager.playerInput.Player.Move.performed -= OnMove;
+        InputManager.playerInput.Player.Move.canceled -= OnMove;
+        InputManager.playerInput.Player.Disable();
     }
 
     public void OnMove(InputAction.CallbackContext context)

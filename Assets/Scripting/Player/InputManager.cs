@@ -3,19 +3,20 @@ using UnityEngine.InputSystem;
 
 public class InputManager : MonoBehaviour
 {
-    public static InputSystem_Actions input;
+    public static InputSystem_Actions playerInput;
     
     private void Awake()
     {
-        input = new InputSystem_Actions();
+        playerInput = new InputSystem_Actions();
     }
 
     private void OnEnable()
     {
-        input.Enable();
+        playerInput.Enable();
     }
+    
     private void OnDisable()
     {
-        input.Disable();
+        playerInput.Disable();
     }
 }
