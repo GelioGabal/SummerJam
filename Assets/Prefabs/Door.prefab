@@ -103,6 +103,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c8dd88d35bb9784fa3d4015556f037a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tooltipText: "F - \u041E\u0442\u043A\u0440\u044B\u0442\u044C / \u0417\u0430\u043A\u0440\u044B\u0442\u044C"
   tooltip: {fileID: 0}
   OnInteract:
     m_PersistentCalls:

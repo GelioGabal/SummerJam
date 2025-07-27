@@ -53,8 +53,6 @@ public class Flooding : MonoBehaviour
     void setWaterLevel(float percent)
     {
         FloodingPercent = percent;
-        Debug.Log(transform.parent.name);
-        EconomyManager.UpdateItemAmount(transform.parent.name, percent);
         transform.localScale = new(transform.localScale.x, Mathf.Lerp(0, 2.5f, percent), 1);
     }
     Coroutine coroutine;

@@ -1,22 +1,25 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 
 public class InteractiveObject : MonoBehaviour
 {
-    [SerializeField] private GameObject tooltip;
+    [SerializeField] string tooltipText;
+    [SerializeField] private TMP_Text tooltip;
     public UnityEvent OnInteract = new();
     
     private void Start()
     {
         if (tooltip != null)
-            tooltip.SetActive(false);
+            tooltip.gameObject.SetActive(false);
     }
     
     public void ShowTooltip(bool show)
     {
         if (tooltip == null) return;
         
-        tooltip.SetActive(show);
-        //Debug.Log("Показываем подсказку: " + show);
+        if (show)
+            tooltip.text = tooltipText;
+        tooltip.gameObject.SetActive(show);
     }
 }

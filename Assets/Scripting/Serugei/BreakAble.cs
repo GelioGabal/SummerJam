@@ -7,7 +7,7 @@ public class BreakAble : MonoBehaviour
     [SerializeField] Flooding flooding;
     public UnityEvent OnBreak = new();
     public UnityEvent OnFix = new();
-    bool IsBreaked = false;
+    public bool IsBreaked { get; private set; } = false;
     InteractiveObject reparer;
     protected virtual void Start()
     {
@@ -21,6 +21,7 @@ public class BreakAble : MonoBehaviour
         flooding.ChangeBreaked(breaked ? 1 : -1);
         if (IsBreaked) OnBreak.Invoke();
         else OnFix.Invoke();
+        Debug.Log($"Breaked {breaked}");
     }
     protected virtual void Break()
     {
@@ -29,5 +30,6 @@ public class BreakAble : MonoBehaviour
     protected virtual void Fix()
     {
         reparer.enabled = false;
+        BrokeManager.OnFixBroke.Invoke();
     }
 }
