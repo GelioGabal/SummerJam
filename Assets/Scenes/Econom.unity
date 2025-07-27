@@ -206,7 +206,6 @@ GameObject:
   - component: {fileID: 55950108}
   - component: {fileID: 55950107}
   - component: {fileID: 55950106}
-  - component: {fileID: 55950110}
   m_Layer: 0
   m_Name: Capsule
   m_TagString: Player
@@ -348,23 +347,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &55950110
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 55950105}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8662754c1136d124ea6f4646802a98a6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pauseMenu: {fileID: 73627767}
-  interactionMenus:
-  - {fileID: 1856203650}
-  currentActiveMenu: {fileID: 0}
-  playerInTrigger: {fileID: 0}
 --- !u!1 &62095361
 GameObject:
   m_ObjectHideFlags: 0
