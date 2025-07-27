@@ -1,4 +1,3 @@
-using NUnit.Framework;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,19 +5,13 @@ using UnityEngine;
 
 public class Flooding : MonoBehaviour
 {
-    [SerializeField] MainStorage[] states;
     [SerializeField] List<Flooding> NeighbourFloodings;
     [SerializeField] List<GateWay> Gates;
-    float FloodingPercent =0;  ////// !!!!!STEPA!!!!! 
+    float FloodingPercent = 0; 
     int BreakBonus = 0;
     private void Start()
     {
-        for (int i = 0; i < states.Length; i++)
-        {
-            EconomyManager.RegisterItem(states[i]);
-        }
-       
-        foreach (InteractiveObject gate in Gates)
+        foreach (GateWay gate in Gates)
             gate.OnInteract.AddListener(UpdateFlooding);
     }
     List<Flooding> AdjacentRooms(List<Flooding> result)
@@ -42,7 +35,6 @@ public class Flooding : MonoBehaviour
             room.setWaterLevel(sumLevel / rooms.Count());
             room.StartFlooding(true, sumBonus / rooms.Count());
         }
-        Debug.Log($"rooms {rooms.Count()} bonus {sumBonus / rooms.Count()}");
     }
 
     public void ChangeBreaked(int delta)

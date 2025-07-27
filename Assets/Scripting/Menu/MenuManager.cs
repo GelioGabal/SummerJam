@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
@@ -10,6 +11,10 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private KeyCode pauseKey = KeyCode.Escape;
 
     private bool _isPaused;
+    public void Play()
+    {
+        SceneManager.LoadSceneAsync(1);
+    }
 
     private void Start()
     {
