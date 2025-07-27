@@ -15,7 +15,6 @@ public class Wire : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHand
     private bool _isDragged = false;
     
     private Vector3 _solvedEndPosition;
-    private RectTransform  _rectTransform;
     
     private void Awake()
     {
@@ -23,46 +22,35 @@ public class Wire : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHand
         _lineRenderer = GetComponent<LineRenderer>();
         _canvas = GetComponentInParent<Canvas>();
         _wireTask = GetComponentInParent<WireTask>();
-        _rectTransform = _canvas.GetComponent<RectTransform>();
-
     }
+
     private void Update()
     {
         if (_wireTask.isAllSolved) return;
         
         if (_isDragged)
         {
-            Vector2 movePos;
-            RectTransformUtility.ScreenPointToLocalPointInRectangle(
-                _rectTransform,
-                Input.mousePosition,
-                _canvas.worldCamera,
-                out movePos
-            );
-            Vector3 mouseWorldPos = _canvas.transform.TransformPoint(movePos);
+            Vector3 screenPos = Input.mousePosition;
+            screenPos.z = 10f; 
+            Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(screenPos);
             
-            _lineRenderer.SetPosition(0, transform.position);
-            _lineRenderer.SetPosition(1, mouseWorldPos);
-
-            Debug.Log($"Dragged: end position: {mouseWorldPos} ");
+            SetLinePosition(Camera.main.ScreenToWorldPoint(transform.position), mouseWorldPos);
         }
         else if (!isSolved)
         {
-            _lineRenderer.SetPosition(0, Vector3.zero);
-            _lineRenderer.SetPosition(1, Vector3.zero);
+            SetLinePosition(Vector3.zero,  Vector3.zero);
         }
-        // else  if (isSolved)
-        // {
-        //     _lineRenderer.SetPosition(0, transform.position);
-        //     _lineRenderer.SetPosition(1, _solvedEndPosition);
-        //     Debug.Log($"isSolved: end position: {_solvedEndPosition} ");
-        // }
-
-        bool isHovered = RectTransformUtility.RectangleContainsScreenPoint(transform as RectTransform, Input.mousePosition, _canvas.worldCamera);
-        if (isHovered)
+        
+        if (RectTransformUtility.RectangleContainsScreenPoint(transform as RectTransform, Input.mousePosition, _canvas.worldCamera))
         {
             _wireTask.hovWire =  this;
         }
+    }
+
+    private void SetLinePosition(Vector3 startPosition, Vector3 endPosition)
+    {
+        _lineRenderer.SetPosition(0, startPosition);
+        _lineRenderer.SetPosition(1, endPosition);
     }
 
     public void SetColor(Color color)
@@ -75,24 +63,11 @@ public class Wire : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHand
         customColor =  color;
     }
 
-    public void OnDrag(PointerEventData eventData)
-    {
-        
-    }
+    public void OnDrag(PointerEventData eventData) {}
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        if (!isLeftWire)
-        {
-            Debug.Log("Is right wire, don't move");
-            return;
-        }
-
-        if (isSolved)
-        {
-            Debug.Log("Is left wire, but solved, don't draw more lines");
-            return;
-        }
+        if (!isLeftWire || isSolved) return;
         
         _lineRenderer.enabled = true;
         
@@ -109,9 +84,6 @@ public class Wire : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHand
             {
                 isSolved = true;
                 _wireTask.hovWire.isSolved = true;
-                
-                // _solvedEndPosition = _wireTask.hovWire.transform.position;
-                // Debug.Log(_solvedEndPosition + " _solvedEndPosition");
             }
             else if (!isSolved)
             {
@@ -123,7 +95,7 @@ public class Wire : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHand
         _wireTask.curWire = null;
         _wireTask.hovWire = null;
 
-        // if (!_wireTask.isAllSolved) 
+        if (!_wireTask.isAllSolved) 
             _wireTask.CheckSolvedWires();
     }
 }

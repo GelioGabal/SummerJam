@@ -134,7 +134,7 @@ MonoBehaviour:
   - {fileID: 3603535782422660464}
   - {fileID: 4647218465452986074}
   curWire: {fileID: 0}
-  curHoveredWire: {fileID: 0}
+  hovWire: {fileID: 0}
   OnSolve:
     m_PersistentCalls:
       m_Calls:
@@ -286,7 +286,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.45490196}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -389,6 +389,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2909727061422091369, guid: e3e0c6eaa417f6b499e92e2ee6384011, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3459567102089796953, guid: e3e0c6eaa417f6b499e92e2ee6384011, type: 3}
+      propertyPath: m_SortingLayer
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7814269803385332179, guid: e3e0c6eaa417f6b499e92e2ee6384011, type: 3}
@@ -508,6 +512,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6183896738208259919, guid: 02005f3c7b4880044b50e0bcc8116420, type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -621,6 +629,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6183896738208259919, guid: 02005f3c7b4880044b50e0bcc8116420, type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -728,6 +740,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2909727061422091369, guid: e3e0c6eaa417f6b499e92e2ee6384011, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3459567102089796953, guid: e3e0c6eaa417f6b499e92e2ee6384011, type: 3}
+      propertyPath: m_SortingLayer
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7814269803385332179, guid: e3e0c6eaa417f6b499e92e2ee6384011, type: 3}
@@ -847,6 +863,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6183896738208259919, guid: 02005f3c7b4880044b50e0bcc8116420, type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -954,6 +974,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2909727061422091369, guid: e3e0c6eaa417f6b499e92e2ee6384011, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3459567102089796953, guid: e3e0c6eaa417f6b499e92e2ee6384011, type: 3}
+      propertyPath: m_SortingLayer
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7814269803385332179, guid: e3e0c6eaa417f6b499e92e2ee6384011, type: 3}
@@ -1067,6 +1091,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2909727061422091369, guid: e3e0c6eaa417f6b499e92e2ee6384011, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3459567102089796953, guid: e3e0c6eaa417f6b499e92e2ee6384011, type: 3}
+      propertyPath: m_SortingLayer
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7814269803385332179, guid: e3e0c6eaa417f6b499e92e2ee6384011, type: 3}
@@ -1184,6 +1212,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5598583442327383679, guid: 02005f3c7b4880044b50e0bcc8116420, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6183896738208259919, guid: 02005f3c7b4880044b50e0bcc8116420, type: 3}
+      propertyPath: m_SortingLayer
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

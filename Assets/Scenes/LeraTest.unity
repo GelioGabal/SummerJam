@@ -639,7 +639,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!223 &318685410
 Canvas:
   m_ObjectHideFlags: 0
@@ -4275,8 +4275,24 @@ PrefabInstance:
     m_TransformParent: {fileID: 318685411}
     m_Modifications:
     - target: {fileID: 219485515512854063, guid: 383013cda567633419507eb566dbdea5, type: 3}
+      propertyPath: m_Positions.Array.data[0].z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 219485515512854063, guid: 383013cda567633419507eb566dbdea5, type: 3}
       propertyPath: m_Parameters.widthMultiplier
-      value: 200
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 219485515512854063, guid: 383013cda567633419507eb566dbdea5, type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 219485515512854063, guid: 383013cda567633419507eb566dbdea5, type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 219485515512854063, guid: 383013cda567633419507eb566dbdea5, type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.r
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 245159623976337209, guid: 383013cda567633419507eb566dbdea5, type: 3}
       propertyPath: m_AnchorMax.y
@@ -4420,6 +4436,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5885608773366123089, guid: 383013cda567633419507eb566dbdea5, type: 3}
       propertyPath: isLeftWire
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6411760069456546599, guid: 383013cda567633419507eb566dbdea5, type: 3}
+      propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6723977528199829408, guid: 383013cda567633419507eb566dbdea5, type: 3}
