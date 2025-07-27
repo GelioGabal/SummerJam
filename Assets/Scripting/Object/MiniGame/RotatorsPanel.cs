@@ -3,22 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine.Events;
 
-public class RotatorsPanel : MonoBehaviour
+public class RotatorsPanel : MiniGamePanel
 {
     [SerializeField] private List<Rotator> rotators = new();
-    private bool _isOpened = false;
     public UnityEvent OnAllSolve;
 
     private void Start()
     {
-        _isOpened = false;
-        gameObject.SetActive(false);
-    }
-
-    public void TogglePanel()
-    {
-        _isOpened = !_isOpened;
-        gameObject.SetActive(_isOpened);
+        ClosePanel();
     }
 
     public void RandomizeAllRotators()
