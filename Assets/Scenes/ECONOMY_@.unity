@@ -17127,11 +17127,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 012ac10fc7a4c8d4b87f578eb62cb5da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _timerDuration: 20
+  _timerDuration: 400
   _timerText: {fileID: 1459874980}
-  _firstPauseAt: 5
-  _secondPauseAt: 10
-  _thirdPauseAt: 15
+  _firstPauseAt: 100
+  _secondPauseAt: 200
+  _thirdPauseAt: 300
   OnFirstPause:
     m_PersistentCalls:
       m_Calls: []
