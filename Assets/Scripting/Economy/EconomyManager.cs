@@ -37,4 +37,25 @@ public class EconomyManager:MonoBehaviour
         }
         return 0;
     }
+
+
+    public static void PrintAllItems()
+    {
+        Debug.Log("=== Содержимое словаря items ===");
+
+        if (items.Count == 0)
+        {
+            Debug.Log("Словарь пуст");
+            return;
+        }
+
+        foreach (var pair in items)
+        {
+            Debug.Log($"Ключ: {pair.Key}, Значение: {pair.Value.amount}");
+            // Если MainStorage имеет дополнительные поля, можно выводить и их:
+            // Debug.Log($"Ключ: {pair.Key}, Значение: {pair.Value.ToString()}");
+        }
+
+        Debug.Log("=== Конец вывода ===");
+    }
 }

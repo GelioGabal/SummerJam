@@ -240,9 +240,12 @@ public class EconomyController : MonoBehaviour
         string name = EconomyManager.GetItemAmount(states[12].name).ToString();
         return name;
     }
+    
 
-
-
+    public void VieAll()
+    {
+        EconomyManager.PrintAllItems();
+    }
 
 
 }

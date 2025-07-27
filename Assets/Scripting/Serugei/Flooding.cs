@@ -6,12 +6,18 @@ using UnityEngine;
 
 public class Flooding : MonoBehaviour
 {
+    [SerializeField] MainStorage[] states;
     [SerializeField] List<Flooding> NeighbourFloodings;
     [SerializeField] List<GateWay> Gates;
-    float FloodingPercent = 0;  ////// !!!!!STEPA!!!!! 
+    float FloodingPercent =0;  ////// !!!!!STEPA!!!!! 
     int BreakBonus = 0;
     private void Start()
     {
+        for (int i = 0; i < states.Length; i++)
+        {
+            EconomyManager.RegisterItem(states[i]);
+        }
+       
         foreach (InteractiveObject gate in Gates)
             gate.OnInteract.AddListener(UpdateFlooding);
     }
@@ -48,7 +54,7 @@ public class Flooding : MonoBehaviour
     {
         FloodingPercent = percent;
         Debug.Log(transform.parent.name);
-        //EconomyManager.UpdateItemAmount(transform.parent.name, percent);
+        EconomyManager.UpdateItemAmount(transform.parent.name, percent);
         transform.localScale = new(transform.localScale.x, Mathf.Lerp(0, 2.5f, percent), 1);
     }
     Coroutine coroutine;

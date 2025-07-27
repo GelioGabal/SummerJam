@@ -136,7 +136,7 @@ public class GlobalTimer : MonoBehaviour
         OnTimeUpdated?.Invoke(_currentTime);
 
         CheckForPauses();
-
+            
         if (_currentTime <= 0f)
         {
             _currentTime = 0f;

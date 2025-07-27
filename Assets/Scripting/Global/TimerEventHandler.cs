@@ -87,6 +87,7 @@ public class TimerEventHandler : MonoBehaviour
         Check[0].SetActive(false);
         Check[1].SetActive(false);
         Check[2].SetActive(false);
+        _timer.StartTimer();
 
     }
 }
