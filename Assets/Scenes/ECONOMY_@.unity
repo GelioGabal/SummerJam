@@ -127,6 +127,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2090960331}
     m_Modifications:
+    - target: {fileID: 324073476854827810, guid: aa6f343fb243dea448e8fdb9caa569fe, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 7309002888781428258}
+    - target: {fileID: 324073476854827810, guid: aa6f343fb243dea448e8fdb9caa569fe, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ContinueTimer
+      objectReference: {fileID: 0}
+    - target: {fileID: 384712415237236522, guid: aa6f343fb243dea448e8fdb9caa569fe, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1861882053424223185, guid: aa6f343fb243dea448e8fdb9caa569fe, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -214,6 +226,10 @@ PrefabInstance:
     - target: {fileID: 4864389262409683154, guid: aa6f343fb243dea448e8fdb9caa569fe, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6643880569132136582, guid: aa6f343fb243dea448e8fdb9caa569fe, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -734,6 +750,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 611828631211170401, guid: ad1e362b4a21ca743bcbf0572a33c51e, type: 3}
   m_PrefabInstance: {fileID: 98113573}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &98173347 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6616195681937906589, guid: aa6f343fb243dea448e8fdb9caa569fe, type: 3}
+  m_PrefabInstance: {fileID: 13763390}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &105086367 stripped
 MonoBehaviour:
@@ -6306,6 +6327,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &414876197 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1830638362668382910, guid: aa6f343fb243dea448e8fdb9caa569fe, type: 3}
+  m_PrefabInstance: {fileID: 13763390}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &449710382
 GameObject:
   m_ObjectHideFlags: 0
@@ -6564,6 +6590,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 739832526378560352, guid: b14b3be562d8da745a786ee32f0e9790, type: 3}
   m_PrefabInstance: {fileID: 458001440}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &467990479 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 876952091079691011, guid: aa6f343fb243dea448e8fdb9caa569fe, type: 3}
+  m_PrefabInstance: {fileID: 13763390}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &619394370
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8990,6 +9027,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 1
   m_SpriteSortPoint: 0
+--- !u!1 &1401282297 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2944505143038197351, guid: aa6f343fb243dea448e8fdb9caa569fe, type: 3}
+  m_PrefabInstance: {fileID: 13763390}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1423961849
 GameObject:
   m_ObjectHideFlags: 0
@@ -9089,6 +9131,17 @@ Transform:
 --- !u!114 &1432889376 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5504554062529055395, guid: aa6f343fb243dea448e8fdb9caa569fe, type: 3}
+  m_PrefabInstance: {fileID: 13763390}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1459874980 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3303243971690658284, guid: aa6f343fb243dea448e8fdb9caa569fe, type: 3}
   m_PrefabInstance: {fileID: 13763390}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
@@ -9477,17 +9530,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 611828631211170401, guid: ad1e362b4a21ca743bcbf0572a33c51e, type: 3}
   m_PrefabInstance: {fileID: 1605043939}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1605043941 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8366706436977647004, guid: ad1e362b4a21ca743bcbf0572a33c51e, type: 3}
-  m_PrefabInstance: {fileID: 1605043939}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f2de31fcca9e39948b59af5fabe50dca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1653496487
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14872,7 +14914,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5655929842605215710
 Transform:
   m_ObjectHideFlags: 0
@@ -16393,7 +16435,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _timerDuration: 20
-  _timerText: {fileID: 0}
+  _timerText: {fileID: 1459874980}
   _firstPauseAt: 5
   _secondPauseAt: 10
   _thirdPauseAt: 15
@@ -16957,38 +16999,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2d0ec877db9f36468dad02f1903571b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RepairCost: 1
-  flooding: {fileID: 1515181464}
-  OnBreak:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1605043941}
-        m_TargetAssemblyTypeName: Lamp, Assembly-CSharp
-        m_MethodName: ToggleAll
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  OnFix:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1605043941}
-        m_TargetAssemblyTypeName: Lamp, Assembly-CSharp
-        m_MethodName: ToggleAll
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
 --- !u!61 &8249088012501208966
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -17211,12 +17221,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _timer: {fileID: 7309002888781428258}
-  _Timer: {fileID: 0}
-  _deepValueText: {fileID: 0}
+  _Timer: {fileID: 1459874980}
+  _deepValueText: {fileID: 467990479}
   Check:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 414876197}
+  - {fileID: 98173347}
+  - {fileID: 1401282297}
 --- !u!1 &8583238742487712802
 GameObject:
   m_ObjectHideFlags: 0
