@@ -4,19 +4,19 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UIElements;
 
-public enum TimerState
-{
-    Running,       
-    FirstPause,    
-    SecondPause,  
-    ThirdPause,    
-    Finished     
-}
+
 
 public class FlexibleTimer : MonoBehaviour
 {
+    public enum TimerState
+    {
+        Running,
+        FirstPause,
+        SecondPause,
+        ThirdPause,
+        Finished
+    }
 
-    
     [Header("Настройки пауз")]
     [SerializeField] private float _firstPauseAt;
     [SerializeField] private float _secondPauseAt;

@@ -1,11 +1,20 @@
 using TMPro;
 using UnityEngine;
-
+public enum TimerState
+{
+    Running,
+    FirstPause,
+    SecondPause,
+    ThirdPause,
+    Finished
+}
 public class GlobalTimer : MonoBehaviour
 {
     [Header("Настройки таймера")]
     [SerializeField] private float _timerDuration = 10f; 
-    [SerializeField] private TMP_Text _timerText; 
+    [SerializeField] private TMP_Text _timerText;
+
+    private double deep = 1;
 
     private float _currentTime;
     private bool _isRunning;
@@ -78,6 +87,7 @@ public class GlobalTimer : MonoBehaviour
             return;
 
         _currentTime -= Time.deltaTime;
+        deep += 0.1;
         OnTimeUpdated?.Invoke(_currentTime);
 
         if (_currentTime <= 0f)
@@ -86,5 +96,10 @@ public class GlobalTimer : MonoBehaviour
             _isRunning = false;
             OnTimeUpdated?.Invoke(_currentTime); 
         }
+    }
+
+    public double getDeep()
+    {
+        return deep;
     }
 }
