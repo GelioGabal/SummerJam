@@ -11,7 +11,7 @@ public class WireTask : MiniGamePanel
     public List<Wire> leftWires = new ();
     public List<Wire> rightWires = new ();
     public Wire curWire;
-    public Wire curHoveredWire;
+    public Wire hovWire;
     
     private List<Color> _availableColors;
     private List<int> _availableLeftWireIndex;
