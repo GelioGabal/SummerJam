@@ -7,18 +7,21 @@ public class Engine : BreakAble
     [SerializeField] Vector2 direction;
     public Vector2 Direction => direction;
     float baseSpeed;
-    private void Start()
+    protected override void Start()
     {
         baseSpeed = Speed;
+        base.Start();
     }
 
     protected override void Break()
     {
         speed = 0;
+        base.Break();
     }
 
     protected override void Fix()
     {
         speed = baseSpeed;
+        base.Fix();
     }
 }

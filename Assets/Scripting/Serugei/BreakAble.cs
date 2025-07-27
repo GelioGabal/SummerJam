@@ -9,7 +9,7 @@ public class BreakAble : MonoBehaviour
     public UnityEvent OnFix = new();
     bool IsBreaked = false;
     InteractiveObject reparer;
-    private void Start()
+    protected virtual void Start()
     {
         reparer = GetComponent<InteractiveObject>();
         OnBreak.AddListener(Break);
