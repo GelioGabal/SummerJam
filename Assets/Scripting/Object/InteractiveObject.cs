@@ -11,6 +11,7 @@ public class InteractiveObject : MonoBehaviour
         if (tooltip != null)
             tooltip.SetActive(false);
     }
+    
     public void ShowTooltip(bool show)
     {
         if (tooltip == null) return;
