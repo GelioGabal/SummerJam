@@ -44,11 +44,11 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _BaseMap:
         m_Texture: {fileID: 2800000, guid: 344e8af8c1f9e4445bb0fa0cc8bda558, type: 3}
-        m_Scale: {x: 3, y: 3}
+        m_Scale: {x: 3, y: 1.5}
         m_Offset: {x: 1, y: 0}
     - _MainTex:
         m_Texture: {fileID: 2800000, guid: 344e8af8c1f9e4445bb0fa0cc8bda558, type: 3}
-        m_Scale: {x: 3, y: 3}
+        m_Scale: {x: 3, y: 1.5}
         m_Offset: {x: 1, y: 0}
     - _MaskTex:
         m_Texture: {fileID: 0}
