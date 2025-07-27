@@ -7,41 +7,27 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float moveSpeed = 5f;
 
-    private Rigidbody2D _rb;
-    private Vector2 _moveInput;
-    private bool _isMoving;
+    Rigidbody2D _rb;
+    Animator anim;
 
     private void Awake()
     {
+        anim = GetComponent<Animator>();
         _rb = GetComponent<Rigidbody2D>();
     }
-
-    private void Start()
-    {
-        InputManager.playerInput.Player.Move.performed += OnMove;
-        InputManager.playerInput.Player.Move.canceled += OnMove;
-        InputManager.playerInput.Player.Enable();
-    }
-
-    private void OnDisable()
-    {
-        InputManager.playerInput.Player.Move.performed -= OnMove;
-        InputManager.playerInput.Player.Move.canceled -= OnMove;
-        InputManager.playerInput.Player.Disable();
-    }
-
-    public void OnMove(InputAction.CallbackContext context)
-    {
-        _moveInput = context.ReadValue<Vector2>();
-    }
-
     private void FixedUpdate()
     {
-        Move();
-    }
-
-    private void Move()
-    {
-        _rb.linearVelocity = _moveInput * moveSpeed;
+        if (InputManager.playerInput.Player.Move.IsPressed())
+        {
+            anim.SetBool("IsWalking", true);
+            float direction = InputManager.playerInput.Player.Move.ReadValue<Vector2>().x;
+            transform.localScale = new(direction < 0 ? -1 : 1, 1);
+            _rb.linearVelocity = new Vector2(direction * Time.fixedDeltaTime * moveSpeed * 100f, _rb.linearVelocityY);
+        }
+        else
+        {
+            anim.SetBool("IsWalking", false);
+            _rb.linearVelocity = Vector2.zero;
+        }
     }
 }

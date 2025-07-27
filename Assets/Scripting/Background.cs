@@ -1,19 +1,36 @@
+using System.Collections;
 using UnityEngine;
 
 public class Background : MonoBehaviour
 {
     [SerializeField] Engine engine;
     [SerializeField] ParticleSystem bubbles;
+    [SerializeField] GameObject FishPrefab;
+    [SerializeField] Sprite[] fishes;
     Material mat;
     void Start()
     {
         mat = GetComponent<Renderer>().materials[0];
+        StartCoroutine(fisher());
     }
 
     void Update()
     {
-        mat.mainTextureOffset += engine.Direction * engine.Speed * 0.001f;
+        mat.mainTextureOffset += engine.Direction * engine.Speed * 0.01f;
         var vel = bubbles.velocityOverLifetime;
         vel.x = engine.Direction.x * engine.Speed *10;
+    }
+
+    IEnumerator fisher()
+    {
+        while (true)
+        {
+            float speed = Random.Range(0.8f,1f) * (Random.Range(0, 2) == 1 ? -1 : 1);
+            Vector3 pos = new(transform.position.x + 10 * (speed > 0 ? -1 : 1), Random.Range(-4f, 4f), 9);
+            GameObject fish = Instantiate(FishPrefab, pos, Quaternion.identity);
+            fish.transform.SetParent(transform);
+            fish.GetComponent<Fish>().Swim(speed, fishes[Random.Range(0, fishes.Length)], engine);
+            yield return new WaitForSeconds(Random.Range(2, 4));
+        }
     }
 }
