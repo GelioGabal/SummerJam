@@ -84,9 +84,9 @@ public class TimerEventHandler : MonoBehaviour
     private void HandleTimerFinished()
     {
         Debug.Log("Обработка завершения таймера");
+        Check[0].SetActive(false);
         Check[1].SetActive(false);
         Check[2].SetActive(false);
-        Check[3].SetActive(false);
 
     }
 }

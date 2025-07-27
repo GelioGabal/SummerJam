@@ -132,7 +132,7 @@ public class GlobalTimer : MonoBehaviour
             return;
 
         _currentTime -= Time.deltaTime;
-        deep += 0.1;
+        deep += 0.001;
         OnTimeUpdated?.Invoke(_currentTime);
 
         CheckForPauses();

@@ -5,7 +5,10 @@ public class EconomyViewer : MonoBehaviour
 {
     [SerializeField] TMP_Text[] texts   ;
 
-
+    private void Update()
+    {
+        ViewStats();
+    }
     public void ViewStats()
     {
         EconomyController economyController = GetComponent<EconomyController>();
@@ -18,5 +21,9 @@ public class EconomyViewer : MonoBehaviour
         texts[6].text = economyController.ViewMiningHelth();
         texts[7].text = economyController.ViewOxigenRoomHelth();
         texts[8].text = economyController.ViewStorageHelth();
+        texts[9].text = economyController.ViewRoom_8();
+        texts[10].text = economyController.ViewRoom_9();
+        texts[11].text = economyController.ViewRoom_10();
+        texts[12].text = economyController.ViewRoom_11();
     }
 }
