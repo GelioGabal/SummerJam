@@ -45,6 +45,10 @@ PrefabInstance:
       value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 5598583442327383679, guid: 02005f3c7b4880044b50e0bcc8116420, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5598583442327383679, guid: 02005f3c7b4880044b50e0bcc8116420, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -90,6 +94,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5598583442327383679, guid: 02005f3c7b4880044b50e0bcc8116420, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6183896738208259919, guid: 02005f3c7b4880044b50e0bcc8116420, type: 3}
+      propertyPath: m_SortingLayer
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8315532016860015337, guid: 02005f3c7b4880044b50e0bcc8116420, type: 3}
