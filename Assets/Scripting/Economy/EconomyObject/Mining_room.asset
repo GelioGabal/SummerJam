@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3660c5b555e57845910c45adc07aed5, type: 3}
   m_Name: Mining_room
   m_EditorClassIdentifier: 
-  itemName: Mining_room
+  itemName: DrillRoom
   icon: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
   amount: 0

@@ -1,15 +1,17 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-public abstract class BreakAble : MonoBehaviour
+public class BreakAble : MonoBehaviour
 {
     [SerializeField] int RepairCost = 1;
     [SerializeField] Flooding flooding;
     public UnityEvent OnBreak = new();
     public UnityEvent OnFix = new();
     bool IsBreaked = false;
+    InteractiveObject reparer;
     private void Start()
     {
+        reparer = GetComponent<InteractiveObject>();
         OnBreak.AddListener(Break);
         OnFix.AddListener(Fix);
     }
@@ -20,6 +22,12 @@ public abstract class BreakAble : MonoBehaviour
         if (IsBreaked) OnBreak.Invoke();
         else OnFix.Invoke();
     }
-    protected abstract void Break();
-    protected abstract void Fix();
+    protected virtual void Break()
+    {
+        reparer.enabled = true;
+    }
+    protected virtual void Fix()
+    {
+        reparer.enabled = false;
+    }
 }

@@ -6,13 +6,11 @@ using UnityEngine.Events;
 public class RotatorsPanel : MiniGamePanel
 {
     [SerializeField] private List<Rotator> rotators = new();
-    public UnityEvent OnAllSolve;
-
+    public UnityEvent<int> OnAllSolve;
     private void Start()
     {
         ClosePanel();
     }
-
     public void RandomizeAllRotators()
     {
         foreach (var rotator in rotators.Where(rotator => rotator != null))
@@ -35,7 +33,7 @@ public class RotatorsPanel : MiniGamePanel
         }
 
         Debug.Log("Все головоломки решены!");
-        OnAllSolve?.Invoke();
+        OnAllSolve?.Invoke(0);
     }
 
     public void AddRotator(Rotator newRotator)
@@ -44,5 +42,17 @@ public class RotatorsPanel : MiniGamePanel
         {
             rotators.Add(newRotator);
         }
+    }
+    public void EnableRotators(BreakAble breaked)
+    {
+        RandomizeAllRotators();
+        OnAllSolve.AddListener(c => onSovled(breaked));
+        TogglePanel();
+    }
+    void onSovled(BreakAble breaked)
+    {
+        breaked.ChangeBreaked(false);
+        ClosePanel();
+        OnAllSolve.RemoveAllListeners();
     }
 }

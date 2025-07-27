@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3660c5b555e57845910c45adc07aed5, type: 3}
   m_Name: Generatoe
   m_EditorClassIdentifier: 
-  itemName: Generator
+  itemName: GeneratorRoom
   icon: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
   amount: 0

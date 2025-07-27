@@ -14,13 +14,16 @@ public class PlayerInteractor : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.TryGetComponent(out curInteract)) 
+        if (other.TryGetComponent(out InteractiveObject obj) && obj.enabled)
+        {
+            curInteract = obj;
             curInteract.ShowTooltip(true);
+        }
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.TryGetComponent(out InteractiveObject obj))
+        if (other.TryGetComponent(out InteractiveObject obj) && obj.enabled)
         {
             if (obj != curInteract) return;
             curInteract.ShowTooltip(false);
