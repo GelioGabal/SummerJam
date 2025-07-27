@@ -12,7 +12,7 @@ public class Flooding : MonoBehaviour
     int BreakBonus = 0;
     private void Start()
     {
-        foreach (GateWay gate in Gates)
+        foreach (InteractiveObject gate in Gates)
             gate.OnInteract.AddListener(UpdateFlooding);
     }
     List<Flooding> AdjacentRooms(List<Flooding> result)
@@ -47,7 +47,7 @@ public class Flooding : MonoBehaviour
     void setWaterLevel(float percent)
     {
         FloodingPercent = percent;
-        transform.localScale = new(transform.localScale.x, percent, 1);
+        transform.localScale = new(transform.localScale.x, Mathf.Lerp(0, 2.5f, percent), 1);
     }
     Coroutine coroutine;
     void StartFlooding(bool enabled, float percent = 0)

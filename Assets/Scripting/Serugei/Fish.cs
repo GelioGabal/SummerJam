@@ -19,7 +19,7 @@ public class Fish : MonoBehaviour
     }
     IEnumerator mover()
     {
-        while(Vector2.Distance(startpos,(Vector2)transform.position)<20)
+        while(Vector2.Distance(startpos,(Vector2)transform.position)<60)
         {
             transform.Translate(new Vector3(_speed + _engine.Direction.x * _engine.Speed,
                 _engine.Direction.y * _engine.Speed, 0) * 0.1f);

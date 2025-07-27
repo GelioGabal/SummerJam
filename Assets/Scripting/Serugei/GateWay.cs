@@ -4,14 +4,14 @@ using UnityEngine.Events;
 
 public class GateWay : InteractiveObject
 {
-    public bool isOpen {  get; private set; }
+    public bool isOpen {  get; private set; } = false;
     Collider2D coll;
     Animator anim;
-    private void Start()
+    private void Awake()
     {
+        base.OnInteract.AddListener(Interact);
         coll = GetComponent<Collider2D>();
         anim = GetComponent<Animator>();
-        base.OnInteract.AddListener(Interact);
     }
     void Interact()
     {

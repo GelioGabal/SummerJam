@@ -20,8 +20,9 @@ public class PlayerInteractor : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.TryGetComponent(out curInteract))
+        if (other.TryGetComponent(out InteractiveObject obj))
         {
+            if (obj != curInteract) return;
             curInteract.ShowTooltip(false);
             curInteract = null;
         }

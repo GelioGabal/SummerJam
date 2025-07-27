@@ -17,6 +17,6 @@ public class InteractiveObject : MonoBehaviour
         if (tooltip == null) return;
         
         tooltip.SetActive(show);
-        Debug.Log("Показываем подсказку: " + show);
+        //Debug.Log("Показываем подсказку: " + show);
     }
 }
