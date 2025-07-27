@@ -169,6 +169,78 @@ public class EconomyController : MonoBehaviour
         return name;
     }
 
+    public void AddRoom_8(int amount)
+    {
+
+        EconomyManager.UpdateItemAmount(states[9].name, amount);
+        Debug.Log(states[9].name + "|" + states[9].amount);
+    }
+
+    public void renoveRoom_8(int amount)
+    {
+        EconomyManager.UpdateItemAmount(states[9].name, -amount);
+        Debug.Log(states[9].name + "|" + states[9].amount);
+    }
+    public string ViewRoom_8()
+    {
+        string name = EconomyManager.GetItemAmount(states[9].name).ToString();
+        return name;
+    }
+
+    public void AddRoom_9(int amount)
+    {
+
+        EconomyManager.UpdateItemAmount(states[10].name, amount);
+        Debug.Log(states[10].name + "|" + states[10].amount);
+    }
+
+    public void renoveRoom_9(int amount)
+    {
+        EconomyManager.UpdateItemAmount(states[10].name, -amount);
+        Debug.Log(states[9].name + "|" + states[10].amount);
+    }
+    public string ViewRoom_9()
+    {
+        string name = EconomyManager.GetItemAmount(states[10].name).ToString();
+        return name;
+    }
+
+    public void AddRoom_10(int amount)
+    {
+
+        EconomyManager.UpdateItemAmount(states[11].name, amount);
+        Debug.Log(states[11].name + "|" + states[11].amount);
+    }
+
+    public void renoveRoom_10(int amount)
+    {
+        EconomyManager.UpdateItemAmount(states[11].name, -amount);
+        Debug.Log(states[11].name + "|" + states[11].amount);
+    }
+    public string ViewRoom_10()
+    {
+        string name = EconomyManager.GetItemAmount(states[11].name).ToString();
+        return name;
+    }
+
+    public void AddRoom_11(int amount)
+    {
+
+        EconomyManager.UpdateItemAmount(states[12].name, amount);
+        Debug.Log(states[12].name + "|" + states[12].amount);
+    }
+
+    public void renoveRoom_11(int amount)
+    {
+        EconomyManager.UpdateItemAmount(states[12].name, -amount);
+        Debug.Log(states[12].name + "|" + states[12].amount);
+    }
+    public string ViewRoom_11()
+    {
+        string name = EconomyManager.GetItemAmount(states[12].name).ToString();
+        return name;
+    }
+
 
 
 
