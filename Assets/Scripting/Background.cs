@@ -15,9 +15,9 @@ public class Background : MonoBehaviour
         StartCoroutine(fisher());
     }
 
-    void Update()
+    void FixedUpdate()
     {
-        mat.mainTextureOffset += engine.Direction * engine.Speed * 0.01f;
+        mat.mainTextureOffset += engine.Direction * engine.Speed * Time.fixedDeltaTime;
         var vel = bubbles.velocityOverLifetime;
         vel.x = engine.Direction.x * engine.Speed *10;
     }

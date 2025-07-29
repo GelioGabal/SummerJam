@@ -4,6 +4,7 @@ using UnityEngine.Events;
 public class BreakAble : MonoBehaviour
 {
     [SerializeField] int RepairCost = 1;
+    [SerializeField] bool doFlood = false;
     [SerializeField] Flooding flooding;
     public UnityEvent OnBreak = new();
     public UnityEvent OnFix = new();
@@ -18,7 +19,7 @@ public class BreakAble : MonoBehaviour
     public void ChangeBreaked(bool breaked)
     {
         IsBreaked = breaked;
-        flooding.ChangeBreaked(breaked ? 1 : -1);
+        if (doFlood) flooding.ChangeBreaked(breaked ? 1 : -1);
         if (IsBreaked) OnBreak.Invoke();
         else OnFix.Invoke();
         Debug.Log($"Breaked {breaked}");
