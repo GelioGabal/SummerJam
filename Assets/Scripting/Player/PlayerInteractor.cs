@@ -6,11 +6,11 @@ public class PlayerInteractor : MonoBehaviour
     InteractiveObject curInteract;
     void Start()
     {
-        InputManager.playerInput.Object.Interact.performed += Interact;
+        InputManager.playerInput.Player.Interact.performed += Interact;
     }
     private void OnDisable()
     {
-        InputManager.playerInput.Object.Interact.performed -= Interact;
+        InputManager.playerInput.Player.Interact.performed -= Interact;
     }
     private void OnTriggerEnter2D(Collider2D other)
     {

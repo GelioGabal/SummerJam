@@ -1,0 +1,37 @@
+using System.Collections;
+using System.Collections.Generic;
+using TMPro;
+using UnityEngine.Localization;
+using UnityEngine.Localization.Settings;
+using UnityEngine;
+using System.Linq;
+
+public class SettingsMenu : MonoBehaviour
+{
+    [SerializeField] TMP_Dropdown localeDropdown;
+    void Start()
+    {
+        int key = PlayerPrefs.HasKey("Locale") ? PlayerPrefs.GetInt("Locale") : 0;
+        ChangeLocale(key);
+        StartCoroutine(LocaleDropdown());
+    }
+    bool localing = false;
+    public void ChangeLocale(int id) { if (!localing) StartCoroutine(SetLocale(id)); }
+    IEnumerator SetLocale(int id)
+    {
+        localing = true;
+        localeDropdown.value = id;
+        yield return LocalizationSettings.InitializationOperation;
+        LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[id];
+        PlayerPrefs.SetInt("Locale", id);
+        localing = false;
+    }
+    IEnumerator LocaleDropdown()
+    {
+        yield return LocalizationSettings.InitializationOperation;
+        List<string> locales = LocalizationSettings.AvailableLocales.Locales.Select(locale => locale.name).ToList();
+        localeDropdown.options = locales.Select(locale => new TMP_Dropdown.OptionData { text = locale }).ToList();
+    }
+    public static string GetLocalizedString(string key) =>
+        new LocalizedString { TableReference = "LocalTable", TableEntryReference = key }.GetLocalizedString();
+}

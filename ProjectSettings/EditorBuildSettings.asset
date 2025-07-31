@@ -6,11 +6,13 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Serugei.unity
-    guid: 42721c0c376af8541af3a1ec29ab6432
-  - enabled: 1
     path: Assets/Scenes/Menu.unity
     guid: 80aa61cbccd3e99468f1f95c841f1179
+  - enabled: 1
+    path: Assets/Scenes/Game.unity
+    guid: 42721c0c376af8541af3a1ec29ab6432
   m_configObjects:
+    com.unity.addressableassets: {fileID: 11400000, guid: 2e947577fb41cf64d9049d71a5bf90db, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+    com.unity.localization.settings: {fileID: 11400000, guid: c83b1a053daff2842bebfd5e5cdb8ec7, type: 2}
   m_UseUCBPForAssetBundles: 0

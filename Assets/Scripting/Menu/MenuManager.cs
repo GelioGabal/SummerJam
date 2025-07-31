@@ -1,62 +1,39 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
-    [Header("Menu Panels")]
-    [SerializeField] private GameObject mainMenuPanel;
-    [SerializeField] private GameObject settingsPanel;
+    [SerializeField] private GameObject menuWindow, settingsWindow;
     
     [Header("Buttons")]
     [SerializeField] private KeyCode pauseKey = KeyCode.Escape;
 
-    private bool _isPaused;
-    public void Play()
-    {
-        SceneManager.LoadSceneAsync(1);
-    }
-
+    private bool _isPaused = false;
     private void Start()
     {
-        ShowMainMenu();
+        if (SceneManager.GetActiveScene().name != "Menu")
+            InputManager.playerInput.UI.EscMenu.performed += toggleEscMenu;
     }
-
-    private void Update()
+    public void LoadScene(int id)
     {
-        if (!Input.GetKeyDown(pauseKey)) return;
-        
-        if (_isPaused) ResumeGame();
-        else ShowMainMenu();
+        SceneManager.LoadSceneAsync(id);
     }
-
-    public void ShowMainMenu()
+    void toggleEscMenu(InputAction.CallbackContext ctx) =>
+        Pause(!_isPaused);
+    private void OnDisable()
     {
-        ShowMainMenuPanel(true);
-        ShowSettingsPanel(false);
-        Time.timeScale = 0f;
+        if(InputManager.playerInput != null)
+            InputManager.playerInput.UI.EscMenu.performed -= toggleEscMenu;
     }
-
-    public void ShowSettings()
+    public void Pause(bool enabled)
     {
-        ShowMainMenuPanel(false);
-        ShowSettingsPanel(true);
-    }
-
-    public void ResumeGame()
-    {
-        ShowMainMenuPanel(false);
-        ShowSettingsPanel(false);
-        Time.timeScale = 1f;
-    }
-
-    private void ShowMainMenuPanel(bool show)
-    {
-        mainMenuPanel.SetActive(show);
-    }
-
-    private void ShowSettingsPanel(bool show)
-    {
-        settingsPanel.SetActive(show);
+        _isPaused = enabled;
+        Time.timeScale = enabled ? 0f : 1f;
+        if(enabled) InputManager.playerInput.Player.Enable();
+        else InputManager.playerInput.Player.Disable();
+        settingsWindow.SetActive(false);
+        menuWindow.SetActive(enabled);
     }
 
     public void QuitGame()

@@ -19,8 +19,8 @@ public class SoundPlayer : MonoBehaviour
     }
     private void Start()
     {
-        //setCurentVolume(soundSlider);
-        //setCurentVolume(musicSlider);
+        setCurentVolume(soundSlider);
+        setCurentVolume(musicSlider);
     }
     private string mixerGroup;
     public string MixerGroup { set { mixerGroup = value; } }
