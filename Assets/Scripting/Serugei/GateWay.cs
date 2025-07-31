@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -17,7 +18,7 @@ public class GateWay : InteractiveObject
     {
         isOpen = !isOpen;
         coll.enabled = !isOpen;
-        if(anim != null)
+        if (anim != null)
             anim.SetBool("IsOpen", isOpen);
     }
 }

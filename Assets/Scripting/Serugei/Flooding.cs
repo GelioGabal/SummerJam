@@ -27,19 +27,26 @@ public class Flooding : MonoBehaviour
             else changePumping(transform.parent.name, false);
         }
     }
+
     List<Flooding> AdjacentRooms(List<Flooding> result)
     {
         result.Add(this);
-        foreach(Flooding room in NeighbourFloodings)
-            if(!result.Contains(room))
-                foreach(var gate in room.Gates)
-                    if(Gates.Contains(gate)&&gate.isOpen)
-                        return room.AdjacentRooms(result);
+        foreach (Flooding room in NeighbourFloodings)
+        {
+            if (!result.Contains(room) && room.isAdjacent(this))
+                result = room.AdjacentRooms(result);
+        }
         return result;
     }
+    bool isAdjacent(Flooding flooding) =>
+        flooding.Gates.Any(gate => Gates.Contains(gate) && gate.isOpen);
     public void UpdateFlooding()
     {
         var rooms = AdjacentRooms(new());
+
+        //var names = rooms.Select(room => room.transform.parent.name).ToArray();
+        //Debug.Log($"Adjacent rooms {rooms.Count()} \n {string.Join("\n", names)}");
+
         float sumBonus = rooms.Sum(room => room.BreakBonus);
         float sumLevel = rooms.Sum(room => room.FloodingPercent);
         foreach (var room in rooms)
