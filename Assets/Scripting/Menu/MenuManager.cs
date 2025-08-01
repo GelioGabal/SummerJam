@@ -31,8 +31,8 @@ public class MenuManager : MonoBehaviour
     {
         _isPaused = enabled;
         Time.timeScale = enabled ? 0f : 1f;
-        if(enabled) InputManager.playerInput.Player.Enable();
-        else InputManager.playerInput.Player.Disable();
+        if(enabled) InputManager.playerInput.Player.Disable();
+        else InputManager.playerInput.Player.Enable();
         settingsWindow.SetActive(false);
         menuWindow.SetActive(enabled);
     }
