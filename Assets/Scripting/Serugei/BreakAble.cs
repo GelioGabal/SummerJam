@@ -22,6 +22,7 @@ public class BreakAble : MonoBehaviour
         if (doFlood) flooding.ChangeBreaked(breaked ? 1 : -1);
         if (IsBreaked) OnBreak.Invoke();
         else OnFix.Invoke();
+        PlayerInteractor.UpdateInteraction.Invoke();
         Debug.Log($"Breaked {breaked}");
     }
     protected virtual void Break()

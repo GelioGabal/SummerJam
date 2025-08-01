@@ -1,12 +1,21 @@
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 public class PlayerInteractor : MonoBehaviour
 {
+    public static UnityEvent UpdateInteraction = new();
     InteractiveObject curInteract;
     void Start()
     {
         InputManager.playerInput.Player.Interact.performed += Interact;
+        UpdateInteraction.AddListener(updateInteraction);
+    }
+    void updateInteraction()
+    {
+        if (curInteract.enabled) return;
+        curInteract.ShowTooltip(false);
+        curInteract = null;
     }
     private void OnDisable()
     {

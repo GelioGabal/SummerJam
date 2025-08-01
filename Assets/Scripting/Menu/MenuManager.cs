@@ -12,6 +12,7 @@ public class MenuManager : MonoBehaviour
     private bool _isPaused = false;
     private void Start()
     {
+        Time.timeScale = 1f;
         if (SceneManager.GetActiveScene().name != "Menu")
             InputManager.playerInput.UI.EscMenu.performed += toggleEscMenu;
     }
