@@ -5,12 +5,15 @@ using UnityEngine.Localization;
 using UnityEngine.Localization.Settings;
 using UnityEngine;
 using System.Linq;
+using UnityEngine.UI;
 
 public class SettingsMenu : MonoBehaviour
 {
     [SerializeField] TMP_Dropdown localeDropdown;
+    [SerializeField] Toggle humster;
     void Start()
     {
+        humster.isOn = PlayerPrefs.HasKey("Character") ? PlayerPrefs.GetInt("Character") == 0 : false;
         int key = PlayerPrefs.HasKey("Locale") ? PlayerPrefs.GetInt("Locale") : 0;
         ChangeLocale(key);
         StartCoroutine(LocaleDropdown());

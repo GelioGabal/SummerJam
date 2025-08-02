@@ -5,9 +5,9 @@ public class Background : MonoBehaviour
 {
     [SerializeField] Engine engine;
     [SerializeField] ParticleSystem bubbles;
-    [SerializeField] GameObject FishPrefab;
+    [SerializeField] GameObject fishPrefab;
     [SerializeField] Sprite[] fishes;
-    [SerializeField] float boundWidth, boundHeight;
+    [SerializeField] float boundWidth, boundHeight, minFishSpeed, maxFishSpeed;
     Material mat;
     void Start()
     {
@@ -26,9 +26,9 @@ public class Background : MonoBehaviour
     {
         while (true)
         {
-            float speed = Random.Range(0.8f,1f) * (Random.Range(0, 2) == 1 ? -1 : 1);
+            float speed = Random.Range(minFishSpeed,maxFishSpeed) * (Random.Range(0, 2) == 1 ? -1 : 1);
             Vector3 pos = new(transform.position.x + boundWidth * (speed > 0 ? -1 : 1), Random.Range(-boundHeight, boundHeight), 9);
-            GameObject fish = Instantiate(FishPrefab, pos, Quaternion.identity);
+            GameObject fish = Instantiate(fishPrefab, pos, Quaternion.identity);
             fish.transform.SetParent(transform);
             fish.GetComponent<Fish>().Swim(speed, fishes[Random.Range(0, fishes.Length)], engine);
             yield return new WaitForSeconds(Random.Range(2, 4));
