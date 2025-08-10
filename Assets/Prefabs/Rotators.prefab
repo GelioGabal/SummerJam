@@ -244,34 +244,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0123e20d9380bd4f8eda298ffc2c49f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotators: []
-  OnAllSolve:
+  OnSolve:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Timer, Assembly-CSharp
-        m_MethodName: ResetTimer
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 5690826730172987264}
-        m_TargetAssemblyTypeName: MiniGamePanel, Assembly-CSharp
-        m_MethodName: ClosePanel
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
+  rotators: []
 --- !u!1 &8417453191421152021
 GameObject:
   m_ObjectHideFlags: 0
@@ -456,6 +432,30 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4938014695182030969}
     m_Modifications:
+    - target: {fileID: 2019609507696429294, guid: 03be3383ae68c1f40be2094b394a2d08, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2019609507696429294, guid: 03be3383ae68c1f40be2094b394a2d08, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 5690826730172987264}
+    - target: {fileID: 2019609507696429294, guid: 03be3383ae68c1f40be2094b394a2d08, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Rotate
+      objectReference: {fileID: 0}
+    - target: {fileID: 2019609507696429294, guid: 03be3383ae68c1f40be2094b394a2d08, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: RotatorsPanel, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2019609507696429294, guid: 03be3383ae68c1f40be2094b394a2d08, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 5428641184434986654}
+    - target: {fileID: 2019609507696429294, guid: 03be3383ae68c1f40be2094b394a2d08, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Transform, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 4780133111347352607, guid: 03be3383ae68c1f40be2094b394a2d08, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -540,7 +540,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rotator (2)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4818090380431506481, guid: 03be3383ae68c1f40be2094b394a2d08, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -558,6 +559,30 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4938014695182030969}
     m_Modifications:
+    - target: {fileID: 2019609507696429294, guid: 03be3383ae68c1f40be2094b394a2d08, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2019609507696429294, guid: 03be3383ae68c1f40be2094b394a2d08, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 5690826730172987264}
+    - target: {fileID: 2019609507696429294, guid: 03be3383ae68c1f40be2094b394a2d08, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Rotate
+      objectReference: {fileID: 0}
+    - target: {fileID: 2019609507696429294, guid: 03be3383ae68c1f40be2094b394a2d08, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: RotatorsPanel, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2019609507696429294, guid: 03be3383ae68c1f40be2094b394a2d08, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 1964890479305975922}
+    - target: {fileID: 2019609507696429294, guid: 03be3383ae68c1f40be2094b394a2d08, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Transform, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 4780133111347352607, guid: 03be3383ae68c1f40be2094b394a2d08, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -642,7 +667,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rotator
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4818090380431506481, guid: 03be3383ae68c1f40be2094b394a2d08, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -660,6 +686,30 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4938014695182030969}
     m_Modifications:
+    - target: {fileID: 2019609507696429294, guid: 03be3383ae68c1f40be2094b394a2d08, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2019609507696429294, guid: 03be3383ae68c1f40be2094b394a2d08, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 5690826730172987264}
+    - target: {fileID: 2019609507696429294, guid: 03be3383ae68c1f40be2094b394a2d08, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Rotate
+      objectReference: {fileID: 0}
+    - target: {fileID: 2019609507696429294, guid: 03be3383ae68c1f40be2094b394a2d08, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: RotatorsPanel, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2019609507696429294, guid: 03be3383ae68c1f40be2094b394a2d08, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 4262631169426387242}
+    - target: {fileID: 2019609507696429294, guid: 03be3383ae68c1f40be2094b394a2d08, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Transform, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 4780133111347352607, guid: 03be3383ae68c1f40be2094b394a2d08, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -744,7 +794,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rotator (1)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4818090380431506481, guid: 03be3383ae68c1f40be2094b394a2d08, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

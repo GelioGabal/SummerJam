@@ -13,7 +13,7 @@ public class PlayerInteractor : MonoBehaviour
     }
     void updateInteraction()
     {
-        if (curInteract.enabled) return;
+        if (curInteract == null || curInteract.enabled) return;
         curInteract.ShowTooltip(false);
         curInteract = null;
     }

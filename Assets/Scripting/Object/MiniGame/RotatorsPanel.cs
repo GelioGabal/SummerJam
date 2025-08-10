@@ -1,58 +1,32 @@
 using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
-using UnityEngine.Events;
 
 public class RotatorsPanel : MiniGamePanel
 {
-    [SerializeField] private List<Rotator> rotators = new();
-    public UnityEvent<int> OnAllSolve;
-    private void Start()
+    [SerializeField] private List<Transform> rotators = new();
+    void checkAllSolved()
     {
-        ClosePanel();
+        if (rotators.All(rotator => checkSolved(rotator))) OnSolve?.Invoke(0);
     }
-    public void RandomizeAllRotators()
+    public override void Activate(BreakAble breaked)
     {
-        foreach (var rotator in rotators.Where(rotator => rotator != null))
-        {
-            rotator.RotateToRandomAngle();
-        }
+        foreach (var rotator in rotators)
+            RotateToRandomAngle(rotator);
+        base.Activate(breaked);
     }
-
-    public void CheckAllSolved()
+    public void RotateToRandomAngle(Transform target)
     {
-        if (rotators.Count == 0)
-        {
-            Debug.LogWarning("Список ротаторов пуст!");
-            return;
-        }
-
-        if (rotators.Any(rotator => rotator == null || !rotator.IsSolved))
-        {
-            return;
-        }
-
-        Debug.Log("Все головоломки решены!");
-        OnAllSolve?.Invoke(0);
+        target.localEulerAngles = new Vector3(0, 0, 45f * Random.Range(1, 7));
     }
-
-    public void AddRotator(Rotator newRotator)
+    public void Rotate(Transform target)
     {
-        if (!rotators.Contains(newRotator))
-        {
-            rotators.Add(newRotator);
-        }
+        if (checkSolved(target)) return;
+        target.localEulerAngles = new Vector3(0, 0, target.localEulerAngles.z + 45f);
+        checkAllSolved();
     }
-    public void EnableRotators(BreakAble breaked)
+    bool checkSolved(Transform target)
     {
-        RandomizeAllRotators();
-        OnAllSolve.AddListener(c => onSovled(breaked));
-        TogglePanel();
-    }
-    void onSovled(BreakAble breaked)
-    {
-        breaked.ChangeBreaked(false);
-        ClosePanel();
-        OnAllSolve.RemoveAllListeners();
+        return target.localRotation.z <= 0;
     }
 }

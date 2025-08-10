@@ -2,100 +2,64 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class Wire : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler
+public class Wire : MonoBehaviour, IEndDragHandler, IDragHandler
 {
-    public bool isLeftWire;
-    public bool isSolved = false;
-    public Color customColor;
+    public bool isSolved {  get; private set; }
    
     private WireTask _wireTask;
-    private Canvas _canvas;
-    private Image _image;
     private LineRenderer _lineRenderer;
-    private bool _isDragged = false;
-    
-    private Vector3 _solvedEndPosition;
-    
-    private void Awake()
+    private Wire _target;
+    private float _magnetRadius;
+    public Vector2 EndPoint => _lineRenderer.GetPosition(1);
+    public void Initialize(WireTask wireTask, Wire target, Color color, float magnetRadius)
     {
-        _image = GetComponent<Image>();
+        _wireTask = wireTask;
+        _target = target;
+        _magnetRadius = magnetRadius;
         _lineRenderer = GetComponent<LineRenderer>();
-        _canvas = GetComponentInParent<Canvas>();
-        _wireTask = GetComponentInParent<WireTask>();
+        setColor(color);
+        isSolved = false;
+        Restart();
     }
 
-    private void Update()
+    public void SetLinePosition(Vector3 endPosition)
     {
-        if (_wireTask.isAllSolved) return;
-        
-        if (_isDragged)
-        {
-            Vector3 screenPos = Input.mousePosition;
-            screenPos.z = 10f; 
-            Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(screenPos);
-            
-            SetLinePosition(Camera.main.ScreenToWorldPoint(transform.position), mouseWorldPos);
-        }
-        else if (!isSolved)
-        {
-            SetLinePosition(Vector3.zero,  Vector3.zero);
-        }
-        
-        if (RectTransformUtility.RectangleContainsScreenPoint(transform as RectTransform, Input.mousePosition, _canvas.worldCamera))
-        {
-            _wireTask.hovWire =  this;
-        }
+        _lineRenderer.SetPosition(0, InputManager.ScreenToWorld(transform.position));
+        _lineRenderer.SetPosition(1, InputManager.ScreenToWorld(endPosition));
     }
-
-    private void SetLinePosition(Vector3 startPosition, Vector3 endPosition)
+    public void Restart() => SetLinePosition(transform.position);
+    void solve(Wire target)
     {
-        _lineRenderer.SetPosition(0, startPosition);
-        _lineRenderer.SetPosition(1, endPosition);
+        isSolved = true;
+        target.isSolved = true;
+        SetLinePosition(target.transform.position);
     }
-
-    public void SetColor(Color color)
+    void setColor(Color color)
     {
-        _image.color = color;
+        GetComponent<Image>().color = color;
         _lineRenderer.startColor = color;
         _lineRenderer.endColor = color;
         _lineRenderer.material.color = color;
-        
-        customColor =  color;
-    }
-
-    public void OnDrag(PointerEventData eventData) {}
-
-    public void OnBeginDrag(PointerEventData eventData)
-    {
-        if (!isLeftWire || isSolved) return;
-        
-        _lineRenderer.enabled = true;
-        
-        _isDragged = true;
-        _wireTask.curWire = this;
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        if (_wireTask.hovWire != null)
-        {
-            if (_wireTask.hovWire.customColor == customColor && 
-                !_wireTask.hovWire.isLeftWire)
-            {
-                isSolved = true;
-                _wireTask.hovWire.isSolved = true;
-            }
-            else if (!isSolved)
-            {
-                _lineRenderer.enabled = false;
-            }
-        }
-        
-        _isDragged = false;
-        _wireTask.curWire = null;
-        _wireTask.hovWire = null;
+        if (isSolved) return;
+        checkSolved();
+    }
 
-        if (!_wireTask.isAllSolved) 
-            _wireTask.CheckSolvedWires();
+    public void OnDrag(PointerEventData eventData)
+    {
+        if (isSolved) return;
+        SetLinePosition(Input.mousePosition);
+    }
+    void checkSolved()
+    {
+        if (Vector2.Distance((Vector2)InputManager.WorldToScreen(EndPoint), (Vector2)_target.transform.position) < _magnetRadius)
+        {
+            solve(_target);
+            _wireTask.CheckAllSolved();
+        }
+        else Restart();
     }
 }

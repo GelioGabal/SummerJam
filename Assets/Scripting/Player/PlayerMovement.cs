@@ -6,28 +6,34 @@ using UnityEngine.InputSystem;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] float moveSpeed = 5f;
-
-    Rigidbody2D _rb;
+    [SerializeField] AudioSource stepsSource;
+    [SerializeField] AudioClip normalStepsSound, lowWaterStepsSound, mediumWaterStepsSound, hightWaterStepsSound;
+    Rigidbody2D rb;
     CharacterController character;
-
+    Vector2 lastPos;
     private void Awake()
     {
         character = GetComponent<CharacterController>();
-        _rb = GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody2D>();
+        lastPos = (Vector2)transform.position;
     }
     private void FixedUpdate()
     {
         if (InputManager.playerInput.Player.Move.IsPressed())
         {
-            character.GetAnimator.SetBool("IsWalking", true);
             float direction = InputManager.playerInput.Player.Move.ReadValue<Vector2>().x;
             transform.localScale = new(direction < 0 ? -1 : 1, 1);
-            _rb.linearVelocity = new Vector2(direction * Time.fixedDeltaTime * moveSpeed * 100f, _rb.linearVelocityY);
+            rb.linearVelocity = new Vector2(direction * Time.fixedDeltaTime * moveSpeed * 100f, rb.linearVelocityY);
+            bool animate = lastPos != (Vector2)transform.position;
+            stepsSource.volume = animate ? 1 : 0;
+            character.GetAnimator.SetBool("IsWalking", animate);
+            lastPos = (Vector2)transform.position;
         }
         else
         {
             character.GetAnimator.SetBool("IsWalking", false);
-            _rb.linearVelocity = Vector2.zero;
+            rb.linearVelocity = Vector2.zero;
+            stepsSource.volume = 0;
         }
     }
 }

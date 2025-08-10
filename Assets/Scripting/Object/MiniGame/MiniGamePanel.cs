@@ -1,18 +1,25 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class MiniGamePanel : MonoBehaviour
 {
-    private bool _isOpened = false;
+    public UnityEvent<int> OnSolve;
+    protected bool _isOpened = false;
 
-    public void TogglePanel()
+    public void TogglePanel(bool enabled)
     {
-        _isOpened = !_isOpened;
-        gameObject.SetActive(_isOpened);
+        _isOpened = enabled;
+        gameObject.SetActive(enabled);
     }
-
-    public void ClosePanel()
+    protected void onSovled(BreakAble breaked)
     {
-        _isOpened = false;
-        gameObject.SetActive(false);
+        breaked.ChangeBreaked(false);
+        TogglePanel(false);
+        OnSolve.RemoveAllListeners();
+    }
+    public virtual void Activate(BreakAble breaked)
+    {
+        OnSolve.AddListener(c => onSovled(breaked));
+        TogglePanel(true);
     }
 }

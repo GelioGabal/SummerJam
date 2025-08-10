@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8315532016860015337}
   - component: {fileID: 6183896738208259919}
   m_Layer: 5
-  m_Name: Right Wire
+  m_Name: Wire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

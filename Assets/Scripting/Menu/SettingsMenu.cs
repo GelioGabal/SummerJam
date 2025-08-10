@@ -16,11 +16,11 @@ public class SettingsMenu : MonoBehaviour
         humster.isOn = PlayerPrefs.HasKey("Character") ? PlayerPrefs.GetInt("Character") == 0 : false;
         int key = PlayerPrefs.HasKey("Locale") ? PlayerPrefs.GetInt("Locale") : 0;
         ChangeLocale(key);
-        StartCoroutine(LocaleDropdown());
+        StartCoroutine(initLocaleDropdown());
     }
     bool localing = false;
-    public void ChangeLocale(int id) { if (!localing) StartCoroutine(SetLocale(id)); }
-    IEnumerator SetLocale(int id)
+    public void ChangeLocale(int id) { if (!localing) StartCoroutine(setLocale(id)); }
+    IEnumerator setLocale(int id)
     {
         localing = true;
         localeDropdown.value = id;
@@ -29,7 +29,7 @@ public class SettingsMenu : MonoBehaviour
         PlayerPrefs.SetInt("Locale", id);
         localing = false;
     }
-    IEnumerator LocaleDropdown()
+    IEnumerator initLocaleDropdown()
     {
         yield return LocalizationSettings.InitializationOperation;
         List<string> locales = LocalizationSettings.AvailableLocales.Locales.Select(locale => locale.name).ToList();

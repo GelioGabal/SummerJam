@@ -2,102 +2,42 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
-using Random = UnityEngine.Random;
 
 public class WireTask : MiniGamePanel
 {
-    public bool isAllSolved = false;
-    public List<Color> wireColors = new ();
-    public List<Wire> leftWires = new ();
-    public List<Wire> rightWires = new ();
-    public Wire curWire;
-    public Wire hovWire;
-    
-    private List<Color> _availableColors;
-    private List<int> _availableLeftWireIndex;
-    private List<int> _availableRightWireIndex;
-    
-    public UnityEvent OnSolve;
-
-    private void Awake()
+    [SerializeField] float magnetRadius;
+    [SerializeField] List<Wire> leftWires = new ();
+    [SerializeField] List<Wire> rightWires = new ();
+    [SerializeField] List<Color> wireColors = new ();
+    List<Wire> allWires;
+    void randomizeWireColors()
     {
-        OnSolve.AddListener(() => 
+        allWires = leftWires.Concat(rightWires).ToList();
+        var numbers = Enumerable.Range(0, wireColors.Count()).ToList();
+        var left = numbers.OrderBy(x => new System.Random().Next()).ToList();
+        var right = numbers.OrderBy(x => new System.Random().Next()).ToList();
+
+        for (int i = 0; i < wireColors.Count(); i++)
         {
-            Debug.Log("Solved Wires");
-        });
-        
-        // SetWireColors();
+            leftWires[i].Initialize(this, rightWires[right.FindIndex(c => c == left[i])], wireColors[left[i]], magnetRadius);
+            rightWires[i].Initialize(this, leftWires[left.FindIndex(c => c == right[i])], wireColors[right[i]], magnetRadius);
+        }
     }
-
-    private void Start()
+    public override void Activate(BreakAble breaked)
     {
-        // SetWireColors();
-        RandomizeWireColors();
-        ClosePanel();
+        randomizeWireColors();
+        base.Activate(breaked);
     }
-    
-    public void RandomizeWireColors()
+    public void CheckAllSolved()
     {
-        _availableColors = new List<Color>(wireColors);
-        _availableLeftWireIndex = new List<int>();
-        _availableRightWireIndex = new List<int>();
-
-        for (int i = 0; i < leftWires.Count; i++)
-        {
-            _availableLeftWireIndex.Add(i);
-        }
-    
-        for (int i = 0; i < rightWires.Count; i++)
-        {
-            _availableRightWireIndex.Add(i);
-        }
-
-        // Отдельные списки для значений индексов
-        List<int> shuffledLeftIndices = new List<int>(_availableLeftWireIndex);
-        List<int> shuffledRightIndices = new List<int>(_availableRightWireIndex);
-
-        // Перемешиваем индексы
-        for (int i = 0; i < shuffledLeftIndices.Count; i++) {
-            int temp = shuffledLeftIndices[i];
-            int randomIndex = Random.Range(i, shuffledLeftIndices.Count);
-            shuffledLeftIndices[i] = shuffledLeftIndices[randomIndex];
-            shuffledLeftIndices[randomIndex] = temp;
-        }
-
-        for (int i = 0; i < shuffledRightIndices.Count; i++) {
-            int temp = shuffledRightIndices[i];
-            int randomIndex = Random.Range(i, shuffledRightIndices.Count);
-            shuffledRightIndices[i] = shuffledRightIndices[randomIndex];
-            shuffledRightIndices[randomIndex] = temp;
-        }
-        
-        for (int i = 0; i < Mathf.Min(_availableColors.Count, shuffledLeftIndices.Count, shuffledRightIndices.Count); i++)
-        {
-            Color color = _availableColors[i];
-            int leftIndex = shuffledLeftIndices[i];
-            int rightIndex = shuffledRightIndices[i];
-        
-            leftWires[leftIndex].SetColor(color);
-            leftWires[leftIndex].isSolved = false;
-            rightWires[rightIndex].SetColor(color);
-            rightWires[rightIndex].isSolved = false;
-        }
-        
-        isAllSolved = false;
+        if (allWires.All(w => w.isSolved)) OnSolve.Invoke(0);
     }
-
-    public void CheckSolvedWires()
+    private void OnDrawGizmos()
     {
-        var solvedWires = rightWires.Count(t => t.isSolved);
-
-        if (solvedWires >= rightWires.Count)
-        {
-            isAllSolved = true;
-            OnSolve?.Invoke();
-        }
-        else
-        {
-            Debug.Log("Unsolved Wires");
-        }
+        Gizmos.color = Color.green;
+        foreach(var w in leftWires)
+            Gizmos.DrawWireSphere(w.transform.position, magnetRadius);
+        foreach(var w in rightWires)
+            Gizmos.DrawWireSphere(w.transform.position, magnetRadius);
     }
 }
