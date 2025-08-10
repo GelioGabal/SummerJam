@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.Events;
 
 public class WireTask : MiniGamePanel
 {
@@ -10,7 +9,7 @@ public class WireTask : MiniGamePanel
     [SerializeField] List<Wire> rightWires = new ();
     [SerializeField] List<Color> wireColors = new ();
     List<Wire> allWires;
-    void randomizeWireColors()
+    protected override void Randomize()
     {
         allWires = leftWires.Concat(rightWires).ToList();
         var numbers = Enumerable.Range(0, wireColors.Count()).ToList();
@@ -23,12 +22,7 @@ public class WireTask : MiniGamePanel
             rightWires[i].Initialize(this, leftWires[left.FindIndex(c => c == right[i])], wireColors[right[i]], magnetRadius);
         }
     }
-    public override void Activate(BreakAble breaked)
-    {
-        randomizeWireColors();
-        base.Activate(breaked);
-    }
-    public void CheckAllSolved()
+    public override void CheckAllSolved()
     {
         if (allWires.All(w => w.isSolved)) OnSolve.Invoke(0);
     }
