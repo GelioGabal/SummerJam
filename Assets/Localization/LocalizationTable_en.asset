@@ -58,6 +58,10 @@ MonoBehaviour:
     m_Localized: Main menu
     m_Metadata:
       m_Items: []
+  - m_Id: 10509258454888448
+    m_Localized: You drown !
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

@@ -6,8 +6,9 @@ public class Wire : MonoBehaviour, IEndDragHandler, IDragHandler
 {
     public bool isSolved {  get; private set; }
    
+    [SerializeField] LineRenderer _lineRenderer;
+    [SerializeField] Image _image;
     private WireTask _wireTask;
-    private LineRenderer _lineRenderer;
     private Wire _target;
     private float _magnetRadius;
     public Vector2 EndPoint => _lineRenderer.GetPosition(1);
@@ -16,7 +17,6 @@ public class Wire : MonoBehaviour, IEndDragHandler, IDragHandler
         _wireTask = wireTask;
         _target = target;
         _magnetRadius = magnetRadius;
-        _lineRenderer = GetComponent<LineRenderer>();
         setColor(color);
         isSolved = false;
         Restart();
@@ -36,7 +36,7 @@ public class Wire : MonoBehaviour, IEndDragHandler, IDragHandler
     }
     void setColor(Color color)
     {
-        GetComponent<Image>().color = color;
+        _image.color = color;
         _lineRenderer.startColor = color;
         _lineRenderer.endColor = color;
         _lineRenderer.material.color = color;
@@ -55,7 +55,7 @@ public class Wire : MonoBehaviour, IEndDragHandler, IDragHandler
     }
     void checkSolved()
     {
-        if (Vector2.Distance((Vector2)InputManager.WorldToScreen(EndPoint), (Vector2)_target.transform.position) < _magnetRadius)
+        if (Vector2.Distance(InputManager.WorldToScreen(EndPoint), _target.transform.position) < _magnetRadius)
         {
             solve(_target);
             _wireTask.CheckAllSolved();

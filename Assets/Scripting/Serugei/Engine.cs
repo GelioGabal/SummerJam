@@ -7,9 +7,11 @@ public class Engine : BreakAble
     [SerializeField] Vector2 direction;
     public Vector2 Direction => direction;
     float baseSpeed;
+    Vector2 baseDirection;
     protected override void Start()
     {
         baseSpeed = Speed;
+        baseDirection = direction;
         base.Start();
     }
 
@@ -23,5 +25,10 @@ public class Engine : BreakAble
     {
         speed = baseSpeed;
         base.Fix();
+    }
+    public void Down(float p)
+    {
+        direction = Vector2.Lerp(IsBreaked ? new(0, baseDirection.y) : baseDirection, Vector2.up, p);
+        speed = Mathf.Lerp(baseSpeed, baseSpeed * 3, p);
     }
 }

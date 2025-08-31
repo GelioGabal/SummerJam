@@ -10,8 +10,10 @@ public class ControlPanelScript : InteractiveObject
     [SerializeField] List<Image> floodIndicators = new();
     public static UnityEvent<string, bool> OnChangePumping = new();
     AudioSource source;
+    PumpController[] t;
     private void Start()
     {
+        t = floodIndicators.Select(i=>i.GetComponent<PumpController>()).ToArray();
         source = GetComponent<AudioSource>();
         Flooding.OnChangeLevel.AddListener(updateFlooding);
         OnChangePumping.AddListener(updateFeedback);
@@ -26,5 +28,10 @@ public class ControlPanelScript : InteractiveObject
         source.enabled = enabled;
         var ind = floodIndicators.First(ind => ind.gameObject.name == name);
         if (ind != default) ind.color = (enabled) ? enabledColor : disabledColor;
+    }
+    public void TurnOffPumps()
+    {
+        foreach (var p in t)
+            p.OnPointerUp(null);
     }
 }

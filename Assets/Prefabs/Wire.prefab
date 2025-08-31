@@ -89,9 +89,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bd475b247fa82f45a244a6dc8570005, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isLeftWire: 0
-  isSolved: 0
-  customColor: {r: 0, g: 0, b: 0, a: 0}
+  _lineRenderer: {fileID: 6183896738208259919}
+  _image: {fileID: 8385928542779352470}
 --- !u!120 &6183896738208259919
 LineRenderer:
   serializedVersion: 2
